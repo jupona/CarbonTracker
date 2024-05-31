@@ -1,0 +1,111 @@
+/* ============= GLOBAL CSS =============== */
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+} /*16px*/
+
+:root {
+  --border-radius: 0.55rem;
+  --transition: 0.3s ease-in-out all;
+  --max-width: 1120px;
+  --fixed-width: 600px;
+  --fluid-width: 90vw;
+  --nav-height: 4rem;
+}
+
+body {
+  background: var(--white-tertiary);
+  color: var(--black-secondary);
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 25px;
+}
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 56px; /* Large heading */
+  line-height: 58px;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 40px; /* Medium heading */
+  line-height: 44x;
+  letter-spacing: 1, 5px;
+}
+
+h3 {
+  font-size: 32px; /* Small heading */
+  line-height: 36px;
+  letter-spacing: 1, 15px;
+}
+
+h4 {
+  font-size: 28px; /* Extra small heading */
+  line-height: 38px;
+  letter-spacing: 2px;
+}
+
+h5 {
+  font-size: 24px; /* Tiny heading */
+  line-height: 33px;
+  letter-spacing: 1, 7px;
+}
+
+h6 {
+  font-size: 18px; /* Extra tiny heading */
+  line-height: 24px;
+  letter-spacing: 1, 3px;
+}
+
+.overline {
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 19px;
+  letter-spacing: 10px;
+  color: var(--orange-primary);
+}
+
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.btn {
+  display: inline-block;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
