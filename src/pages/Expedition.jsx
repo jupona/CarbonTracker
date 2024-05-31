@@ -18,15 +18,10 @@ const Expedition = () => {
     emission: 0,
   });
 
-  const handleSave = () => {
-    const data = {
-      transportRoutier,
-      transportFerroviaire,
-      transportMaritime,
-    };
+  const handleSave = (data, filename) => {
     const json = JSON.stringify(data, null, 2);
     const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, "expedition_data.json");
+    saveAs(blob, filename);
   };
 
   const handleInputChange = (setTransport, e) => {
@@ -52,7 +47,7 @@ const Expedition = () => {
           </thead>
           <tbody>
             <tr>
-              <td>Camion (La Corne)</td>
+              <td>Camion </td>
               <td>
                 <input
                   type="number"
@@ -65,6 +60,11 @@ const Expedition = () => {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() => handleSave(transportRoutier, "transportRoutier.json")}
+        >
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -94,6 +94,13 @@ const Expedition = () => {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() =>
+            handleSave(transportFerroviaire, "transportFerroviaire.json")
+          }
+        >
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -121,10 +128,13 @@ const Expedition = () => {
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <div className="section">
-        <button onClick={handleSave}>Enregistrer</button>
+        <button
+          onClick={() =>
+            handleSave(transportMaritime, "transportMaritime.json")
+          }
+        >
+          Enregistrer
+        </button>
       </div>
     </Wrapper>
   );

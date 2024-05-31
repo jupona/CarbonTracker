@@ -82,11 +82,10 @@ const Deplacements = () => {
     });
   };
 
-  const handleSave = () => {
-    const data = { domicileTravail, cadreTravail, avion };
+  const handleSave = (data, filename) => {
     const json = JSON.stringify(data, null, 2);
     const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, "deplacements_data.json");
+    saveAs(blob, filename);
   };
 
   return (
@@ -158,6 +157,11 @@ const Deplacements = () => {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() => handleSave(domicileTravail, "domicileTravail.json")}
+        >
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -220,6 +224,9 @@ const Deplacements = () => {
             </tr>
           </tbody>
         </table>
+        <button onClick={() => handleSave(cadreTravail, "cadreTravail.json")}>
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -280,10 +287,9 @@ const Deplacements = () => {
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <div className="section">
-        <button onClick={handleSave}>Enregistrer</button>
+        <button onClick={() => handleSave(avion, "avion.json")}>
+          Enregistrer
+        </button>
       </div>
     </Wrapper>
   );

@@ -68,14 +68,10 @@ const Halocarbures = () => {
     setSelections(newSelections);
   };
 
-  const handleSave = () => {
-    const data = {
-      hydrofluorocarbures: selectionsHFC,
-      perfluorocarbures: selectionsPFC,
-    };
+  const handleSave = (data, filename) => {
     const json = JSON.stringify(data, null, 2);
     const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, "halocarbures_data.json");
+    saveAs(blob, filename);
   };
 
   const totalPRP = (selections) =>
@@ -129,6 +125,9 @@ const Halocarbures = () => {
             </tr>
           </tbody>
         </table>
+        <button onClick={() => handleSave(selectionsHFC, "selectionsHFC.json")}>
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -175,10 +174,9 @@ const Halocarbures = () => {
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <div className="section">
-        <button onClick={handleSave}>Enregistrer</button>
+        <button onClick={() => handleSave(selectionsPFC, "selectionsPFC.json")}>
+          Enregistrer
+        </button>
       </div>
     </Wrapper>
   );

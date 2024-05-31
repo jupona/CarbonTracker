@@ -40,14 +40,10 @@ const Electricite = () => {
     }));
   };
 
-  const handleSave = () => {
-    const data = {
-      hydroQuebec,
-      pertesLigne,
-    };
+  const handleSave = (data, filename) => {
     const json = JSON.stringify(data, null, 2);
     const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, "electricite_data.json");
+    saveAs(blob, filename);
   };
 
   return (
@@ -95,6 +91,9 @@ const Electricite = () => {
             </tr>
           </tbody>
         </table>
+        <button onClick={() => handleSave(hydroQuebec, "hydroQuebec.json")}>
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -119,10 +118,9 @@ const Electricite = () => {
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <div className="section">
-        <button onClick={handleSave}>Enregistrer</button>
+        <button onClick={() => handleSave(pertesLigne, "pertesLigne.json")}>
+          Enregistrer
+        </button>
       </div>
     </Wrapper>
   );

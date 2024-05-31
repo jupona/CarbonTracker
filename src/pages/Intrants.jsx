@@ -34,7 +34,7 @@ const Intrants = () => {
 
   const handleInputChange = (category, key, value) => {
     const newData = { ...data };
-    newData[category][key] = parseFloat(value);
+    newData[category][key] = parseFloat(value) || 0;
     newData[category].total =
       Object.keys(newData[category])
         .filter((k) => k !== "total" && k !== "facteur")
@@ -45,10 +45,10 @@ const Intrants = () => {
     setData(newData);
   };
 
-  const handleSave = () => {
-    const json = JSON.stringify(data, null, 2);
+  const handleSave = (category, filename) => {
+    const json = JSON.stringify(data[category], null, 2);
     const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, "intrants_data.json");
+    saveAs(blob, filename);
   };
 
   return (
@@ -120,6 +120,9 @@ const Intrants = () => {
             </tr>
           </tbody>
         </table>
+        <button onClick={() => handleSave("acier", "acier_data.json")}>
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -168,6 +171,13 @@ const Intrants = () => {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() =>
+            handleSave("produitsChimiques", "produitsChimiques_data.json")
+          }
+        >
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -213,6 +223,9 @@ const Intrants = () => {
             </tr>
           </tbody>
         </table>
+        <button onClick={() => handleSave("plastique", "plastique_data.json")}>
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -258,10 +271,9 @@ const Intrants = () => {
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <div className="section">
-        <button onClick={handleSave}>Enregistrer</button>
+        <button onClick={() => handleSave("hydrogene", "hydrogene_data.json")}>
+          Enregistrer
+        </button>
       </div>
     </Wrapper>
   );

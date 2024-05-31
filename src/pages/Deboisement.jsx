@@ -35,20 +35,10 @@ const Deboisement = () => {
     100
   ).toFixed(2);
 
-  const handleSave = () => {
-    const data = {
-      perteStocksCarbone: {
-        superficie,
-        totalCO2e: totalCO2eStocksCarbone,
-      },
-      perteSequestration: {
-        superficieSequestration,
-        totalCO2e: totalCO2eSequestration,
-      },
-    };
+  const handleSave = (data, filename) => {
     const json = JSON.stringify(data, null, 2);
     const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, "deboisement_data.json");
+    saveAs(blob, filename);
   };
 
   return (
@@ -86,6 +76,19 @@ const Deboisement = () => {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() =>
+            handleSave(
+              {
+                superficie,
+                totalCO2e: totalCO2eStocksCarbone,
+              },
+              "perte_stocks_carbone.json"
+            )
+          }
+        >
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -121,10 +124,19 @@ const Deboisement = () => {
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <div className="section">
-        <button onClick={handleSave}>Enregistrer</button>
+        <button
+          onClick={() =>
+            handleSave(
+              {
+                superficieSequestration,
+                totalCO2e: totalCO2eSequestration,
+              },
+              "perte_sequestration.json"
+            )
+          }
+        >
+          Enregistrer
+        </button>
       </div>
     </Wrapper>
   );

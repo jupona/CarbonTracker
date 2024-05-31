@@ -194,17 +194,10 @@ const Combustibles = () => {
   const totalPRP = (selections) =>
     selections.reduce((acc, curr) => acc + parseFloat(curr.prp), 0).toFixed(2);
 
-  const handleSave = () => {
-    const data = {
-      selectionsFixes,
-      selectionsMobiles,
-      selectionsElectricite,
-      selectionsChauffage,
-      selectionsExplosifs,
-    };
+  const handleSave = (data, filename) => {
     const json = JSON.stringify(data, null, 2);
     const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, "data.json");
+    saveAs(blob, filename);
   };
 
   return (
@@ -266,6 +259,11 @@ const Combustibles = () => {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() => handleSave(selectionsFixes, "selectionsFixes.json")}
+        >
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -327,6 +325,13 @@ const Combustibles = () => {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() =>
+            handleSave(selectionsMobiles, "selectionsMobiles.json")
+          }
+        >
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -392,6 +397,13 @@ const Combustibles = () => {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() =>
+            handleSave(selectionsElectricite, "selectionsElectricite.json")
+          }
+        >
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -455,6 +467,13 @@ const Combustibles = () => {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() =>
+            handleSave(selectionsChauffage, "selectionsChauffage.json")
+          }
+        >
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -496,10 +515,13 @@ const Combustibles = () => {
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <div className="section">
-        <button onClick={handleSave}>Enregistrer</button>
+        <button
+          onClick={() =>
+            handleSave(selectionsExplosifs, "selectionsExplosifs.json")
+          }
+        >
+          Enregistrer
+        </button>
       </div>
     </Wrapper>
   );

@@ -38,24 +38,11 @@ const EauxUsees = () => {
     eauxUseesAzote.FNC;
   const N2O = totalAzote * eauxUseesAzote.FEN2O * (44 / 28) * 0.001;
   const PRPAzote = N2O * 298;
-  const handleSave = () => {
-    const data = {
-      eauxUseesChOrg: {
-        population: populationChOrg,
-        total: totalChOrg,
-        CH4,
-        PRP: PRPChOrg,
-      },
-      eauxUseesAzote: {
-        population: populationAzote,
-        total: totalAzote,
-        N2O,
-        PRP: PRPAzote,
-      },
-    };
+
+  const handleSave = (data, filename) => {
     const json = JSON.stringify(data, null, 2);
     const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, "eaux_usees_data.json");
+    saveAs(blob, filename);
   };
 
   return (
@@ -130,6 +117,21 @@ const EauxUsees = () => {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() =>
+            handleSave(
+              {
+                population: populationChOrg,
+                total: totalChOrg,
+                CH4,
+                PRP: PRPChOrg,
+              },
+              "eauxUseesChOrg.json"
+            )
+          }
+        >
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -189,10 +191,21 @@ const EauxUsees = () => {
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <div className="section">
-        <button onClick={handleSave}>Enregistrer</button>
+        <button
+          onClick={() =>
+            handleSave(
+              {
+                population: populationAzote,
+                total: totalAzote,
+                N2O,
+                PRP: PRPAzote,
+              },
+              "eauxUseesAzote.json"
+            )
+          }
+        >
+          Enregistrer
+        </button>
       </div>
     </Wrapper>
   );

@@ -68,15 +68,10 @@ const Dechets = () => {
     });
   };
 
-  const handleSave = () => {
-    const data = {
-      quantiteMatiereOrganique,
-      resultMatiereOrganique,
-      autresRejets,
-    };
+  const handleSave = (data, filename) => {
     const json = JSON.stringify(data, null, 2);
     const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, "dechets_directs_data.json");
+    saveAs(blob, filename);
   };
 
   return (
@@ -116,6 +111,19 @@ const Dechets = () => {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() =>
+            handleSave(
+              {
+                quantiteMatiereOrganique,
+                resultMatiereOrganique,
+              },
+              "matiere_organique_data.json"
+            )
+          }
+        >
+          Enregistrer
+        </button>
       </div>
 
       <div className="section">
@@ -184,10 +192,11 @@ const Dechets = () => {
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <div className="section">
-        <button onClick={handleSave}>Enregistrer</button>
+        <button
+          onClick={() => handleSave(autresRejets, "autres_rejets_data.json")}
+        >
+          Enregistrer
+        </button>
       </div>
     </Wrapper>
   );

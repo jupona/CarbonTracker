@@ -95,168 +95,131 @@ contract CarbonEmissions {
     }
 
     // Combustibles
-    function addCombustiblesFossilesSourcesFixes(
-        uint256 quantity,
-        uint256 factor
-    ) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addCombustiblesFossilesSourcesFixes(uint256 emissions) public {
         companies[msg.sender].combustibles.fossilesSourcesFixes += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addCombustiblesFossilesSourcesMobiles(
-        uint256 quantity,
-        uint256 factor
-    ) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addCombustiblesFossilesSourcesMobiles(uint256 emissions) public {
         companies[msg.sender].combustibles.fossilesSourcesMobiles += emissions;
         updateTotalEmissions(emissions);
     }
 
     function addProductionElectriciteCombustiblesSourcesFixes(
-        uint256 quantity,
-        uint256 factor
+        uint256 emissions
     ) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
         companies[msg.sender]
             .combustibles
             .productionElectriciteCombustiblesSourcesFixes += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addChauffageFossile(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addChauffageFossile(uint256 emissions) public {
         companies[msg.sender].combustibles.chauffageFossile += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addExplosifs(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addExplosifs(uint256 emissions) public {
         companies[msg.sender].combustibles.explosifs += emissions;
         updateTotalEmissions(emissions);
     }
 
     // Electricité
-    function addFournisseur(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addFournisseur(uint256 emissions) public {
         companies[msg.sender].electricite.fournisseur += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addPertesEnLigne(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addPertesEnLigne(uint256 emissions) public {
         companies[msg.sender].electricite.pertesEnLigne += emissions;
         updateTotalEmissions(emissions);
     }
 
     // Halocarbures
-    function addClimatisation(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addClimatisation(uint256 emissions) public {
         companies[msg.sender].halocarbures.climatisation += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addTransportElectricite(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addTransportElectricite(uint256 emissions) public {
         companies[msg.sender].halocarbures.transportElectricite += emissions;
         updateTotalEmissions(emissions);
     }
 
     // Eaux Usées
-    function addTraitementEauxUsees(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addTraitementEauxUsees(uint256 emissions) public {
         companies[msg.sender].eauxUsees.traitement += emissions;
         updateTotalEmissions(emissions);
     }
 
     // Intrants
-    function addMetaux(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addMetaux(uint256 emissions) public {
         companies[msg.sender].intrants.metaux += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addProduitsChimiques(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addProduitsChimiques(uint256 emissions) public {
         companies[msg.sender].intrants.produitsChimiques += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addPlastiques(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addPlastiques(uint256 emissions) public {
         companies[msg.sender].intrants.plastiques += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addHydrogene(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addHydrogene(uint256 emissions) public {
         companies[msg.sender].intrants.hydrogene += emissions;
         updateTotalEmissions(emissions);
     }
 
     // Déchets
-    function addMatiereOrganique(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addMatiereOrganique(uint256 emissions) public {
         companies[msg.sender].dechets.matiereOrganique += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addAutresMateriaux(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addAutresMateriaux(uint256 emissions) public {
         companies[msg.sender].dechets.autresMateriaux += emissions;
         updateTotalEmissions(emissions);
     }
 
     // Déboisement
-    function addPerteStocks(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addPerteStocks(uint256 emissions) public {
         companies[msg.sender].deboisement.perteStocks += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addPerteSequestration(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addPerteSequestration(uint256 emissions) public {
         companies[msg.sender].deboisement.perteSequestration += emissions;
         updateTotalEmissions(emissions);
     }
 
     // Expédition
-    function addFluxRoutier(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addFluxRoutier(uint256 emissions) public {
         companies[msg.sender].expedition.fluxRoutier += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addFluxFerroviaire(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addFluxFerroviaire(uint256 emissions) public {
         companies[msg.sender].expedition.fluxFerroviaire += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addFluxMaritime(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addFluxMaritime(uint256 emissions) public {
         companies[msg.sender].expedition.fluxMaritime += emissions;
         updateTotalEmissions(emissions);
     }
 
     // Déplacements
-    function addDomicileTravail(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addDomicileTravail(uint256 emissions) public {
         companies[msg.sender].deplacements.domicileTravail += emissions;
         updateTotalEmissions(emissions);
     }
 
-    function addTravail(uint256 quantity, uint256 factor) public {
-        uint256 emissions = calculateEmissions(quantity, factor);
+    function addTravail(uint256 emissions) public {
         companies[msg.sender].deplacements.travail += emissions;
         updateTotalEmissions(emissions);
-    }
-
-    function calculateEmissions(
-        uint256 quantity,
-        uint256 factor
-    ) private pure returns (uint256) {
-        return quantity * factor;
     }
 
     function updateTotalEmissions(uint256 emissions) private {
