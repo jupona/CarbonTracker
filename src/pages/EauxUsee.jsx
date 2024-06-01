@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/EauxUsees";
-import { saveAs } from "file-saver";
-
+// import { saveAs } from "file-saver";
+import { useState, useContext } from "react";
+import carbonABI from "../abis/carbonABI.json";
+import WalletContext from '../context/walletContext';
+import Web3 from "web3";
+import { carbonContract} from "../abis/contractAddress.json";
 const EauxUsees = () => {
   const [populationChOrg, setPopulationChOrg] = useState("");
   const [populationAzote, setPopulationAzote] = useState("");
+  const { walletAddress} = useContext(WalletContext);
 
   const eauxUseesChOrg = {
     DBOHabJour: 0.06,
@@ -21,6 +26,7 @@ const EauxUsees = () => {
     FNC: 1.1359,
     FEN2O: 0.016,
   };
+  
 
   const totalChOrg =
     populationChOrg *
@@ -39,12 +45,34 @@ const EauxUsees = () => {
   const N2O = totalAzote * eauxUseesAzote.FEN2O * (44 / 28) * 0.001;
   const PRPAzote = N2O * 298;
 
-  const handleSave = (data, filename) => {
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, filename);
-  };
+  // const handleSave = (data, filename) => {
+  //   const json = JSON.stringify(data, null, 2);
+  //   const blob = new Blob([json], { type: "application/json" });
+  //   saveAs(blob, filename);
+  // };
+  let eauxUseesAzoteInt = Math.floor(eauxUseesAzote.FEN2O * 100)
+  let eauxUseesMethanegInt = Math.floor(eauxUseesChOrg.FECH4 * 100)
 
+  const addEauxUseesAzoteInt = async (eauxUseesAzoteInt) => {
+    try {
+      const address = carbonContract[0];
+      const web3 = new Web3(window.ethereum);
+      const carbon = new web3.eth.Contract(carbonABI, address);
+      await carbon.methods.addTraitementEauxUsees(eauxUseesAzoteInt).send({ from: walletAddress });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const addEauxUseesMethanegInt = async (eauxUseesMethanegInt) => {
+    try {
+      const address = carbonContract[0];
+      const web3 = new Web3(window.ethereum);
+      const carbon = new web3.eth.Contract(carbonABI, address);
+      await carbon.methods.addTraitementEauxUsees(eauxUseesMethanegInt).send({ from: walletAddress });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <Wrapper>
       <div className="section">
@@ -119,15 +147,7 @@ const EauxUsees = () => {
         </table>
         <button
           onClick={() =>
-            handleSave(
-              {
-                population: populationChOrg,
-                total: totalChOrg,
-                CH4,
-                PRP: PRPChOrg,
-              },
-              "eauxUseesChOrg.json"
-            )
+            addEauxUseesMethanegInt(eauxUseesMethanegInt)
           }
         >
           Enregistrer
@@ -193,15 +213,7 @@ const EauxUsees = () => {
         </table>
         <button
           onClick={() =>
-            handleSave(
-              {
-                population: populationAzote,
-                total: totalAzote,
-                N2O,
-                PRP: PRPAzote,
-              },
-              "eauxUseesAzote.json"
-            )
+            addEauxUseesAzoteInt(eauxUseesAzoteInt)
           }
         >
           Enregistrer

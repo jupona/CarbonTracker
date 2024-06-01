@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import  { useState, useContext } from "react";
 import Wrapper from "../assets/wrappers/Intrants";
-import { saveAs } from "file-saver";
+// import { saveAs } from "file-saver";
+import carbonABI from "../abis/carbonABI.json";
+import WalletContext from '../context/walletContext';
+import Web3 from "web3";
+import { carbonContract} from "../abis/contractAddress.json";
 
+const web3 = new Web3(window.ethereum);
 const Intrants = () => {
+  const { walletAddress} = useContext(WalletContext);
+
   const [data, setData] = useState({
     acier: {
       fournisseurBoullet: 0,
@@ -45,12 +52,68 @@ const Intrants = () => {
     setData(newData);
   };
 
-  const handleSave = (category, filename) => {
-    const json = JSON.stringify(data[category], null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, filename);
-  };
+  // const handleSave = (category, filename) => {
+  //   const json = JSON.stringify(data[category], null, 2);
+  //   const blob = new Blob([json], { type: "application/json" });
+  //   saveAs(blob, filename);
+  // };
 
+  let totalAcier = Math.floor(data.acier.total * 100)
+  let totalProduitsChimiques = Math.floor(data.produitsChimiques.total * 100)
+  let totalPlastique = Math.floor(data.plastique.total * 100)
+  let totalHydrogene = Math.floor(data.hydrogene.total * 100)
+  const addtotalAcier = async (totalAcier) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+     const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addMetaux(totalAcier).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const addtotalProduitsChimiques = async (totalProduitsChimiques) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+     const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addProduitsChimiques(totalProduitsChimiques).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const addtotalPlastique = async (totalPlastique) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+     const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addPlastiques(totalPlastique).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const addtotalHydrogene = async (totalHydrogene) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+     const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addHydrogene(totalHydrogene).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <Wrapper>
       <div className="section">
@@ -120,7 +183,7 @@ const Intrants = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => handleSave("acier", "acier_data.json")}>
+        <button onClick={() => addtotalAcier(totalAcier)}>
           Enregistrer
         </button>
       </div>
@@ -173,7 +236,7 @@ const Intrants = () => {
         </table>
         <button
           onClick={() =>
-            handleSave("produitsChimiques", "produitsChimiques_data.json")
+           addtotalProduitsChimiques(totalProduitsChimiques)
           }
         >
           Enregistrer
@@ -223,7 +286,7 @@ const Intrants = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => handleSave("plastique", "plastique_data.json")}>
+        <button onClick={() => addtotalPlastique(totalPlastique)}>
           Enregistrer
         </button>
       </div>
@@ -271,7 +334,7 @@ const Intrants = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => handleSave("hydrogene", "hydrogene_data.json")}>
+        <button onClick={() => addtotalHydrogene(totalHydrogene) }>
           Enregistrer
         </button>
       </div>

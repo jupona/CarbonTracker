@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect, useContext } from "react";
 import Wrapper from "../assets/wrappers/Electricite";
-import { saveAs } from "file-saver";
-
+// import { saveAs } from "file-saver";
+import { carbonContract} from "../abis/contractAddress.json";
+import carbonABI from "../abis/carbonABI.json";
+import WalletContext from '../context/walletContext';
+import Web3 from "web3";
+const web3 = new Web3(window.ethereum);
 const Electricite = () => {
+  const { walletAddress} = useContext(WalletContext);
+
   const [hydroQuebec, setHydroQuebec] = useState({
     caracterisation: "",
     conso: "",
@@ -40,11 +46,40 @@ const Electricite = () => {
     }));
   };
 
-  const handleSave = (data, filename) => {
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, filename);
+  // const handleSave = (data, filename) => {
+  //   const json = JSON.stringify(data, null, 2);
+  //   const blob = new Blob([json], { type: "application/json" });
+  //   saveAs(blob, filename);
+  // };
+
+  let pertesLigneInt = Math.floor(pertesLigne.emission * 100)
+  let hydroQuebecInt = Math.floor(hydroQuebec.emission * 100)
+  const addpertesLigneInt = async (pertesLigneInt) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+      const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addPertesEnLigne(pertesLigneInt ).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
   };
+  const addhydroQuebecInt = async (hydroQuebecInt) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+      const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addHydroQuebec(hydroQuebecInt ).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <Wrapper>
@@ -91,13 +126,13 @@ const Electricite = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => handleSave(hydroQuebec, "hydroQuebec.json")}>
+        <button onClick={() => addhydroQuebecInt(hydroQuebecInt)}>
           Enregistrer
         </button>
       </div>
 
       <div className="section">
-        <h2>Pertes en ligne de l'électricité</h2>
+        <h2>Pertes en ligne de lélectricité</h2>
         <table>
           <thead>
             <tr>
@@ -118,7 +153,7 @@ const Electricite = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => handleSave(pertesLigne, "pertesLigne.json")}>
+        <button onClick={() => addpertesLigneInt(pertesLigneInt)}>
           Enregistrer
         </button>
       </div>

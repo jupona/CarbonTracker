@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/Deplacements";
-import { saveAs } from "file-saver";
-
+// import { saveAs } from "file-saver";
+import { useState , useContext} from "react";
+import carbonABI from "../abis/carbonABI.json";
+import WalletContext from '../context/walletContext';
+import Web3 from "web3";
+import { carbonContract} from "../abis/contractAddress.json";
 const Deplacements = () => {
+  const { walletAddress} = useContext(WalletContext);
   const [domicileTravail, setDomicileTravail] = useState({
     diesel: {
       employees: "",
@@ -82,12 +87,47 @@ const Deplacements = () => {
     });
   };
 
-  const handleSave = (data, filename) => {
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, filename);
-  };
+  // const handleSave = (data, filename) => {
+  //   const json = JSON.stringify(data, null, 2);
+  //   const blob = new Blob([json], { type: "application/json" });
+  //   saveAs(blob, filename);
+  // };
 
+  let domicileTravailInt = Math.floor(domicileTravail.diesel.totalCO2e * 100)
+  let cadreTravailInt = Math.floor(cadreTravail.diesel.totalCO2e * 100)
+  let avionInt = Math.floor(avion.totalCO2e * 100)
+  const addDomicileTravailInt = async (domicileTravailInt) => {
+    try {
+      const address = carbonContract[0];
+      const web3 = new Web3(window.ethereum);
+      const carbon = new web3.eth.Contract(carbonABI, address);
+      await carbon.methods.addDomicileTravail(domicileTravailInt).send({ from: walletAddress });
+    } catch (error) {
+      console.error("Impossible de sauvegarder les données", error);
+    }
+  }
+
+  const addCadreTravailInt = async (cadreTravailInt) => {
+    try {
+      const address = carbonContract[0];
+      const web3 = new Web3(window.ethereum);
+      const carbon = new web3.eth.Contract(carbonABI, address);
+      await carbon.methods.addTravail(cadreTravailInt).send({ from: walletAddress });
+    } catch (error) {
+      console.error("Impossible de sauvegarder les données", error);
+    }
+  }
+
+  const addAvionInt = async (avionInt) => {
+    try {
+      const address = carbonContract[0];
+      const web3 = new Web3(window.ethereum);
+      const carbon = new web3.eth.Contract(carbonABI, address);
+      await carbon.methods.addTravail(avionInt).send({ from: walletAddress });
+    } catch (error) {
+      console.error("Impossible de sauvegarder les données", error);
+    }
+  }
   return (
     <Wrapper>
       <div className="section">
@@ -96,11 +136,11 @@ const Deplacements = () => {
           <thead>
             <tr>
               <th>Carburant</th>
-              <th>Nombre d'employés</th>
+              <th>Nombre demployés</th>
               <th>Moyenne parcourus par un employé/ jour (Km)</th>
-              <th>Total de km pour l'année</th>
+              <th>Total de km pour lannée</th>
               <th>Litre/100 km en voiture</th>
-              <th>Facteur d'émission kg CO2 / litre</th>
+              <th>Facteur démission kg CO2 / litre</th>
               <th>t CO2e</th>
             </tr>
           </thead>
@@ -158,7 +198,7 @@ const Deplacements = () => {
           </tbody>
         </table>
         <button
-          onClick={() => handleSave(domicileTravail, "domicileTravail.json")}
+          onClick={() => addDomicileTravailInt(domicileTravailInt)}
         >
           Enregistrer
         </button>
@@ -224,7 +264,7 @@ const Deplacements = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => handleSave(cadreTravail, "cadreTravail.json")}>
+        <button onClick={() => addCadreTravailInt(cadreTravailInt)}>
           Enregistrer
         </button>
       </div>
@@ -287,7 +327,7 @@ const Deplacements = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => handleSave(avion, "avion.json")}>
+        <button onClick={() => addAvionInt(avionInt)}>
           Enregistrer
         </button>
       </div>

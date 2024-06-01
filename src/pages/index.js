@@ -1,4 +1,4 @@
-import Deplacements from "./Deplacements";
+// import Deplacements from "./Deplacements";
 
 export { default as Accueil } from "./Accueil";
 export { default as Bilan } from "./Bilan";

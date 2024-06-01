@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/Dechets";
 import { saveAs } from "file-saver";
-
+import { useState, useContext } from "react";
+import carbonABI from "../abis/carbonABI.json";
+import WalletContext from '../context/walletContext';
+import Web3 from "web3";
+import { carbonContract} from "../abis/contractAddress.json";
 const Dechets = () => {
+  const { walletAddress} = useContext(WalletContext);
+
   const [quantiteMatiereOrganique, setQuantiteMatiereOrganique] = useState("");
   const [resultMatiereOrganique, setResultMatiereOrganique] = useState({
     co2: 0,
@@ -25,6 +31,7 @@ const Dechets = () => {
     CH4: 3.54,
     N2O: 0.18,
   };
+
 
   const handleMatiereOrganiqueChange = (e) => {
     const { value } = e.target;
@@ -73,7 +80,17 @@ const Dechets = () => {
     const blob = new Blob([json], { type: "application/json" });
     saveAs(blob, filename);
   };
-
+  let matiereOrganiqueInt = Math.floor(resultMatiereOrganique.totalCO2e * 100)
+  const addMatiereOrganiqueInt = async (matiereOrganiqueInt) => {
+    try {
+      const address = carbonContract[0];
+      const web3 = new Web3(window.ethereum);
+      const carbon = new web3.eth.Contract(carbonABI, address);
+      await carbon.methods.addMatiereOrganique(matiereOrganiqueInt).send({ from: walletAddress });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <Wrapper>
       <div className="section">
@@ -113,13 +130,7 @@ const Dechets = () => {
         </table>
         <button
           onClick={() =>
-            handleSave(
-              {
-                quantiteMatiereOrganique,
-                resultMatiereOrganique,
-              },
-              "matiere_organique_data.json"
-            )
+            addMatiereOrganiqueInt(matiereOrganiqueInt)
           }
         >
           Enregistrer

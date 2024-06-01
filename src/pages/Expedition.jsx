@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import  { useState, useContext } from "react";
 import Wrapper from "../assets/wrappers/Expedition";
-import { saveAs } from "file-saver";
-
+// import { saveAs } from "file-saver";
+import carbonABI from "../abis/carbonABI.json";
+import WalletContext from '../context/walletContext';
+import Web3 from "web3";
+import { carbonContract} from "../abis/contractAddress.json";
 const Expedition = () => {
+  const { walletAddress} = useContext(WalletContext);
+
   const [transportRoutier, setTransportRoutier] = useState({
     infoGES: "",
     emission: 0,
@@ -18,11 +23,11 @@ const Expedition = () => {
     emission: 0,
   });
 
-  const handleSave = (data, filename) => {
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, filename);
-  };
+  // const handleSave = (data, filename) => {
+  //   const json = JSON.stringify(data, null, 2);
+  //   const blob = new Blob([json], { type: "application/json" });
+  //   saveAs(blob, filename);
+  // };
 
   const handleInputChange = (setTransport, e) => {
     const { name, value } = e.target;
@@ -32,6 +37,41 @@ const Expedition = () => {
       emission: value,
     }));
   };
+  let transportRoutierInt = Math.floor(transportRoutier.emission * 100)
+  let transportFerroviaireInt = Math.floor(transportFerroviaire.emission * 100)
+  let transportMaritimeInt = Math.floor(transportMaritime.emission * 100)
+  const addTransportRoutierInt = async (transportRoutierInt) => {
+    try {
+      const address = carbonContract[0];
+      const web3 = new Web3(window.ethereum);
+      const carbon = new web3.eth.Contract(carbonABI, address);
+      await carbon.methods.addFluxRoutier(transportRoutierInt).send({ from: walletAddress });
+    } catch (error) {
+      console.error("Impossible de sauvegarder les données", error);
+    }
+  }
+
+  const addTransportFerroviaireInt = async (transportFerroviaireInt) => {
+    try {
+      const address = carbonContract[0];
+      const web3 = new Web3(window.ethereum);
+      const carbon = new web3.eth.Contract(carbonABI, address);
+      await carbon.methods.addFluxFerroviaire(transportFerroviaireInt).send({ from: walletAddress });
+    } catch (error) {
+      console.error("Impossible de sauvegarder les données", error);
+    }
+  }
+
+  const addTransportMaritimeInt = async (transportMaritimeInt) => {
+    try {
+      const address = carbonContract[0];
+      const web3 = new Web3(window.ethereum);
+      const carbon = new web3.eth.Contract(carbonABI, address);
+      await carbon.methods.addFluxMaritime(transportMaritimeInt).send({ from: walletAddress });
+    } catch (error) {
+      console.error("Impossible de sauvegarder les données", error);
+    }
+  }
 
   return (
     <Wrapper>
@@ -61,7 +101,7 @@ const Expedition = () => {
           </tbody>
         </table>
         <button
-          onClick={() => handleSave(transportRoutier, "transportRoutier.json")}
+          onClick={() => addTransportRoutierInt(transportRoutierInt)}
         >
           Enregistrer
         </button>
@@ -79,7 +119,7 @@ const Expedition = () => {
           </thead>
           <tbody>
             <tr>
-              <td>CN Rail (Val d'Or)</td>
+              <td>CN Rail (Val dOr)</td>
               <td>
                 <input
                   type="number"
@@ -96,7 +136,7 @@ const Expedition = () => {
         </table>
         <button
           onClick={() =>
-            handleSave(transportFerroviaire, "transportFerroviaire.json")
+            addTransportFerroviaireInt(transportFerroviaireInt)
           }
         >
           Enregistrer
@@ -130,7 +170,7 @@ const Expedition = () => {
         </table>
         <button
           onClick={() =>
-            handleSave(transportMaritime, "transportMaritime.json")
+            addTransportMaritimeInt(transportMaritimeInt)
           }
         >
           Enregistrer

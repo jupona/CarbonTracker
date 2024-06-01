@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import Wrapper from "../assets/wrappers/Halocarbures";
 import { saveAs } from "file-saver";
 
@@ -82,11 +82,11 @@ const Halocarbures = () => {
   return (
     <Wrapper>
       <div className="section">
-        <h2>Emissions d'Hydrofluorocarbures</h2>
+        <h2>Emissions dHydrofluorocarbures</h2>
         <table>
           <thead>
             <tr>
-              <th>Emissions d'Hydrofluorocarbures</th>
+              <th>Emissions dHydrofluorocarbures</th>
               <th>Formule chimique</th>
               <th>Unité</th>
               <th>Quantité</th>

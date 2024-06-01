@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/Deboisement";
-import { saveAs } from "file-saver";
+// import { saveAs } from "file-saver";
+import { useState, useContext } from "react";
+import { carbonContract} from "../abis/contractAddress.json";
+import carbonABI from "../abis/carbonABI.json";
+import WalletContext from '../context/walletContext';
+import Web3 from "web3";
+const web3 = new Web3(window.ethereum);
 
 const Deboisement = () => {
   const [superficie, setSuperficie] = useState("");
   const [superficieSequestration, setSuperficieSequestration] = useState("");
+  const { walletAddress} = useContext(WalletContext);
 
   const perteStocksCarbone = {
     tMSh: 62.9,
@@ -35,11 +42,41 @@ const Deboisement = () => {
     100
   ).toFixed(2);
 
-  const handleSave = (data, filename) => {
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, filename);
+  // const handleSave = (data, filename) => {
+  //   const json = JSON.stringify(data, null, 2);
+  //   const blob = new Blob([json], { type: "application/json" });
+  //   saveAs(blob, filename);
+  // };
+  let totalCO2eStocksCarboneInt = Math.floor(totalCO2eStocksCarbone * 100) 
+  let totalCO2eSequestrationInt = Math.floor(totalCO2eSequestration * 100)
+  const addtotalCO2eStocksCarboneInt = async (totalCO2eStocksCarboneInt) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+      const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addPerteStocks(totalCO2eStocksCarboneInt ).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle errors or show an error message to the user if something goes wrong.
+    }
   };
+  const addtotalCO2eSequestrationInt = async (totalCO2eSequestrationInt) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+      const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addPerteSequestration(totalCO2eSequestrationInt ).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle errors or show an error message to the user if something goes wrong.
+    }
+  }
 
   return (
     <Wrapper>
@@ -78,13 +115,7 @@ const Deboisement = () => {
         </table>
         <button
           onClick={() =>
-            handleSave(
-              {
-                superficie,
-                totalCO2e: totalCO2eStocksCarbone,
-              },
-              "perte_stocks_carbone.json"
-            )
+            addtotalCO2eStocksCarboneInt(totalCO2eStocksCarboneInt)
           }
         >
           Enregistrer
@@ -126,13 +157,7 @@ const Deboisement = () => {
         </table>
         <button
           onClick={() =>
-            handleSave(
-              {
-                superficieSequestration,
-                totalCO2e: totalCO2eSequestration,
-              },
-              "perte_sequestration.json"
-            )
+            addtotalCO2eSequestrationInt(totalCO2eSequestrationInt)
           }
         >
           Enregistrer

@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   Accueil,
@@ -15,8 +15,7 @@ import {
   Intrants,
   Layout,
 } from "./pages";
-import Dechet from "./pages/Dechets";
-
+import { WalletProvider } from "./context/walletContext";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -77,7 +76,12 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    //wrap the router with the wallet provider. so it can be accessed by all the components
+    <WalletProvider>
+      <RouterProvider router={router} />
+    </WalletProvider>
+  );
 };
 
 export default App;

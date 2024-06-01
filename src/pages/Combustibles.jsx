@@ -1,6 +1,16 @@
-import React, { useState } from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+// import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/Combustibles";
 import { saveAs } from "file-saver";
+import { useState, useContext } from "react";
+// import web3 from "web3";
+import { carbonContract} from "../abis/contractAddress.json";
+import carbonABI from "../abis/carbonABI.json";
+import WalletContext from '../context/walletContext';
+import Web3 from "web3";
+
+const web3 = new Web3(window.ethereum);
 
 const combustiblesOptions = [
   {
@@ -101,6 +111,8 @@ const initialSelection = (options) =>
   }));
 
 const Combustibles = () => {
+  const { walletAddress} = useContext(WalletContext);
+
   const [selectionsFixes, setSelectionsFixes] = useState(
     initialSelection(combustiblesOptions)
   );
@@ -200,6 +212,91 @@ const Combustibles = () => {
     saveAs(blob, filename);
   };
 
+  let combustFixes = Number(totalPRP(selectionsFixes))
+  let combustMobile = Number(totalPRP(selectionsMobiles))
+  let productionElectricite = Number(totalPRP(selectionsElectricite))
+  let chauffageFossile = Number(totalPRP(selectionsChauffage))
+  let explosifs = Number(totalPRP(selectionsExplosifs))
+  let combustFixesInt = Number(Math.floor(combustFixes * 100))
+  let combustMobileInt = Number(Math.floor(combustMobile * 100))
+  let productionElectriciteInt = Number(Math.floor(productionElectricite * 100))
+  let chauffageFossileInt = Number(Math.floor(chauffageFossile * 100))
+  let explosifsInt = Number(Math.floor(explosifs * 100))
+
+ 
+  const addCombustiblesFossilesSourcesFixesFunction = async (combustFixesInt) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+      const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addCombustiblesFossilesSourcesFixes(combustFixesInt ).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle errors or show an error message to the user if something goes wrong.
+    }
+  };
+  const addCombustiblesFossilesSourcesMobileesFunction = async (combustMobileInt) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+      const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addCombustiblesFossilesSourcesMobiles(combustMobileInt ).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle errors or show an error message to the user if something goes wrong.
+    }
+  };
+  const addProductionElectriciteFunction = async (productionElectriciteInt) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+      const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addProductionElectriciteCombustiblesSourcesFixes(productionElectriciteInt ).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle errors or show an error message to the user if something goes wrong.
+    }
+  }
+  const addChauffageFossileFunction = async (chauffageFossileInt) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+      const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addChauffageFossile(chauffageFossileInt ).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle errors or show an error message to the user if something goes wrong.
+    }
+  }
+
+  const addexplosifsFunction = async (explosifsInt) => {
+    try {
+      // Contract address and ABI should already be available in the component
+     const address = carbonContract[0];
+      const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addExplosifs(explosifsInt ).send({
+        from: walletAddress // The connected address that will initiate the transaction
+      });
+      console.log(result);
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle errors or show an error message to the user if something goes wrong.
+    }
+  }
+
+
   return (
     <Wrapper>
       <div className="section">
@@ -260,7 +357,7 @@ const Combustibles = () => {
           </tbody>
         </table>
         <button
-          onClick={() => handleSave(selectionsFixes, "selectionsFixes.json")}
+          onClick={() => addCombustiblesFossilesSourcesFixesFunction(combustFixesInt)}
         >
           Enregistrer
         </button>
@@ -327,7 +424,7 @@ const Combustibles = () => {
         </table>
         <button
           onClick={() =>
-            handleSave(selectionsMobiles, "selectionsMobiles.json")
+            addCombustiblesFossilesSourcesMobileesFunction(combustMobileInt)
           }
         >
           Enregistrer
@@ -335,7 +432,7 @@ const Combustibles = () => {
       </div>
 
       <div className="section">
-        <h2>Production d'électricité</h2>
+        <h2>Production délectricité</h2>
         <table>
           <thead>
             <tr>
@@ -399,7 +496,7 @@ const Combustibles = () => {
         </table>
         <button
           onClick={() =>
-            handleSave(selectionsElectricite, "selectionsElectricite.json")
+            addProductionElectriciteFunction(productionElectriciteInt)
           }
         >
           Enregistrer
@@ -469,7 +566,7 @@ const Combustibles = () => {
         </table>
         <button
           onClick={() =>
-            handleSave(selectionsChauffage, "selectionsChauffage.json")
+            addChauffageFossileFunction(chauffageFossileInt)
           }
         >
           Enregistrer
@@ -517,7 +614,7 @@ const Combustibles = () => {
         </table>
         <button
           onClick={() =>
-            handleSave(selectionsExplosifs, "selectionsExplosifs.json")
+            addexplosifsFunction(explosifsInt)
           }
         >
           Enregistrer
