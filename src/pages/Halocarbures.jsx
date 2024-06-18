@@ -1,6 +1,11 @@
-import  { useState } from "react";
+import { useState, useContext } from "react";
 import Wrapper from "../assets/wrappers/Halocarbures";
-import { saveAs } from "file-saver";
+import { carbonContract } from "../abis/contractAddress.json";
+import carbonABI from "../abis/carbonABI.json";
+import WalletContext from "../context/walletContext";
+import Web3 from "web3";
+
+const web3 = new Web3(window.ethereum);
 
 const hydrofluorocarburesOptions = [
   { name: "HFC-23", formula: "CHF3", prp: 14800 },
@@ -45,6 +50,8 @@ const initialSelection = (options) =>
   }));
 
 const Halocarbures = () => {
+  const { walletAddress } = useContext(WalletContext);
+
   const [selectionsHFC, setSelectionsHFC] = useState(
     initialSelection(hydrofluorocarburesOptions)
   );
@@ -68,25 +75,52 @@ const Halocarbures = () => {
     setSelections(newSelections);
   };
 
-  const handleSave = (data, filename) => {
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, filename);
-  };
-
   const totalPRP = (selections) =>
     selections
       .reduce((acc, curr) => acc + parseFloat(curr.prpResult), 0)
       .toFixed(2);
 
+  let totalHFC = Number(totalPRP(selectionsHFC));
+  let totalPFC = Number(totalPRP(selectionsPFC));
+  let totalHFCInt = Math.floor(totalHFC * 100);
+  let totalPFCInt = Math.floor(totalPFC * 100);
+
+  const addClimatisationFunction = async (totalHFCInt) => {
+    try {
+      const address = carbonContract[0];
+      const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods.addClimatisation(totalHFCInt).send({
+        from: walletAddress,
+      });
+      console.log(result);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const addTransportElectriciteFunction = async (totalPFCInt) => {
+    try {
+      const address = carbonContract[0];
+      const contract = new web3.eth.Contract(carbonABI, address);
+      const result = await contract.methods
+        .addTransportElectricite(totalPFCInt)
+        .send({
+          from: walletAddress,
+        });
+      console.log(result);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <Wrapper>
       <div className="section">
-        <h2>Emissions dHydrofluorocarbures</h2>
+        <h2>Emissions d'Hydrofluorocarbures</h2>
         <table>
           <thead>
             <tr>
-              <th>Emissions dHydrofluorocarbures</th>
+              <th>Emissions d'Hydrofluorocarbures</th>
               <th>Formule chimique</th>
               <th>Unité</th>
               <th>Quantité</th>
@@ -125,7 +159,7 @@ const Halocarbures = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => handleSave(selectionsHFC, "selectionsHFC.json")}>
+        <button onClick={() => addClimatisationFunction(totalHFCInt)}>
           Enregistrer
         </button>
       </div>
@@ -174,7 +208,7 @@ const Halocarbures = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => handleSave(selectionsPFC, "selectionsPFC.json")}>
+        <button onClick={() => addTransportElectriciteFunction(totalPFCInt)}>
           Enregistrer
         </button>
       </div>

@@ -1,13 +1,13 @@
 // import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/Deplacements";
 // import { saveAs } from "file-saver";
-import { useState , useContext} from "react";
+import { useState, useContext } from "react";
 import carbonABI from "../abis/carbonABI.json";
-import WalletContext from '../context/walletContext';
+import WalletContext from "../context/walletContext";
 import Web3 from "web3";
-import { carbonContract} from "../abis/contractAddress.json";
+import { carbonContract } from "../abis/contractAddress.json";
 const Deplacements = () => {
-  const { walletAddress} = useContext(WalletContext);
+  const { walletAddress } = useContext(WalletContext);
   const [domicileTravail, setDomicileTravail] = useState({
     diesel: {
       employees: "",
@@ -93,30 +93,34 @@ const Deplacements = () => {
   //   saveAs(blob, filename);
   // };
 
-  let domicileTravailInt = Math.floor(domicileTravail.diesel.totalCO2e * 100)
-  let cadreTravailInt = Math.floor(cadreTravail.diesel.totalCO2e * 100)
-  let avionInt = Math.floor(avion.totalCO2e * 100)
+  let domicileTravailInt = Math.floor(domicileTravail.diesel.totalCO2e * 100);
+  let cadreTravailInt = Math.floor(cadreTravail.diesel.totalCO2e * 100);
+  let avionInt = Math.floor(avion.totalCO2e * 100);
   const addDomicileTravailInt = async (domicileTravailInt) => {
     try {
       const address = carbonContract[0];
       const web3 = new Web3(window.ethereum);
       const carbon = new web3.eth.Contract(carbonABI, address);
-      await carbon.methods.addDomicileTravail(domicileTravailInt).send({ from: walletAddress });
+      await carbon.methods
+        .addDomicileTravail(domicileTravailInt)
+        .send({ from: walletAddress });
     } catch (error) {
       console.error("Impossible de sauvegarder les données", error);
     }
-  }
+  };
 
   const addCadreTravailInt = async (cadreTravailInt) => {
     try {
       const address = carbonContract[0];
       const web3 = new Web3(window.ethereum);
       const carbon = new web3.eth.Contract(carbonABI, address);
-      await carbon.methods.addTravail(cadreTravailInt).send({ from: walletAddress });
+      await carbon.methods
+        .addTravail(cadreTravailInt)
+        .send({ from: walletAddress });
     } catch (error) {
       console.error("Impossible de sauvegarder les données", error);
     }
-  }
+  };
 
   const addAvionInt = async (avionInt) => {
     try {
@@ -127,7 +131,7 @@ const Deplacements = () => {
     } catch (error) {
       console.error("Impossible de sauvegarder les données", error);
     }
-  }
+  };
   return (
     <Wrapper>
       <div className="section">
@@ -197,9 +201,7 @@ const Deplacements = () => {
             </tr>
           </tbody>
         </table>
-        <button
-          onClick={() => addDomicileTravailInt(domicileTravailInt)}
-        >
+        <button onClick={() => addDomicileTravailInt(domicileTravailInt)}>
           Enregistrer
         </button>
       </div>
@@ -313,7 +315,15 @@ const Deplacements = () => {
                 />
               </td>
               <td>{avion.emissionFactor}</td>
-              <td>{(avion.emissionFactor * avion.distance).toFixed(2)}</td>
+              <td>
+                {(
+                  (avion.emissionFactor *
+                    avion.distance *
+                    avion.employees *
+                    avion.trajets) /
+                  1000
+                ).toFixed(2)}
+              </td>
               <td>
                 <input
                   type="number"
@@ -327,9 +337,7 @@ const Deplacements = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => addAvionInt(avionInt)}>
-          Enregistrer
-        </button>
+        <button onClick={() => addAvionInt(avionInt)}>Enregistrer</button>
       </div>
     </Wrapper>
   );

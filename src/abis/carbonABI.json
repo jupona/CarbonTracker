@@ -1,548 +1,1042 @@
 [
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addAutresMateriaux",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addChauffageFossile",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addClimatisation",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addCombustiblesFossilesSourcesFixes",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addCombustiblesFossilesSourcesMobiles",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addDomicileTravail",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addExplosifs",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addFluxFerroviaire",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addFluxMaritime",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addFluxRoutier",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addFournisseur",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addHydrogene",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addMatiereOrganique",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addMetaux",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addPerteSequestration",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addPerteStocks",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addPertesEnLigne",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addPlastiques",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addProductionElectriciteCombustiblesSourcesFixes",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addProduitsChimiques",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addTraitementEauxUsees",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addTransportElectricite",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "emissions",
-				"type": "uint256"
-			}
-		],
-		"name": "addTravail",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "companies",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "totalEmissions",
-				"type": "uint256"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "fossilesSourcesFixes",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "fossilesSourcesMobiles",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "productionElectriciteCombustiblesSourcesFixes",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "chauffageFossile",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "explosifs",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CarbonEmissions.Combustibles",
-				"name": "combustibles",
-				"type": "tuple"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "fournisseur",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "pertesEnLigne",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CarbonEmissions.Electricite",
-				"name": "electricite",
-				"type": "tuple"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "climatisation",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "transportElectricite",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CarbonEmissions.Halocarbures",
-				"name": "halocarbures",
-				"type": "tuple"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "traitement",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CarbonEmissions.EauxUsees",
-				"name": "eauxUsees",
-				"type": "tuple"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "metaux",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "produitsChimiques",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "plastiques",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "hydrogene",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CarbonEmissions.Intrants",
-				"name": "intrants",
-				"type": "tuple"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "matiereOrganique",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "autresMateriaux",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CarbonEmissions.Dechets",
-				"name": "dechets",
-				"type": "tuple"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "perteStocks",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "perteSequestration",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CarbonEmissions.Deboisement",
-				"name": "deboisement",
-				"type": "tuple"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "fluxRoutier",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "fluxFerroviaire",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "fluxMaritime",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CarbonEmissions.Expedition",
-				"name": "expedition",
-				"type": "tuple"
-			},
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "domicileTravail",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "travail",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct CarbonEmissions.Deplacements",
-				"name": "deplacements",
-				"type": "tuple"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_company",
-				"type": "address"
-			}
-		],
-		"name": "getTotalEmissions",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "ownerOfContract",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_name",
-				"type": "string"
-			}
-		],
-		"name": "registerCompany",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	}
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addAutresMateriaux",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addChauffageFossile",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addClimatisation",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addCombustiblesFossilesSourcesFixes",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addCombustiblesFossilesSourcesMobiles",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addDomicileTravail",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addExplosifs",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addFluxFerroviaire",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addFluxMaritime",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addFluxRoutier",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addFournisseur",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addHydrogene",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addMatiereOrganique",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addMetaux",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addPerteSequestration",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addPerteStocks",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addPertesEnLigne",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addPlastiques",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addProductionElectriciteCombustiblesSourcesFixes",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addProduitsChimiques",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addTraitementEauxUsees",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addTransportElectricite",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "emissions",
+        "type": "uint256"
+      }
+    ],
+    "name": "addTravail",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "companies",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalEmissions",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "fossilesSourcesFixes",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "fossilesSourcesMobiles",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "productionElectriciteCombustiblesSourcesFixes",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "chauffageFossile",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "explosifs",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CarbonEmissions.Combustibles",
+        "name": "combustibles",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "fournisseur",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "pertesEnLigne",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CarbonEmissions.Electricite",
+        "name": "electricite",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "climatisation",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "transportElectricite",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CarbonEmissions.Halocarbures",
+        "name": "halocarbures",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "traitement",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CarbonEmissions.EauxUsees",
+        "name": "eauxUsees",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "metaux",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "produitsChimiques",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "plastiques",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "hydrogene",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CarbonEmissions.Intrants",
+        "name": "intrants",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "matiereOrganique",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "autresMateriaux",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CarbonEmissions.Dechets",
+        "name": "dechets",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "perteStocks",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "perteSequestration",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CarbonEmissions.Deboisement",
+        "name": "deboisement",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "fluxRoutier",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "fluxFerroviaire",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "fluxMaritime",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CarbonEmissions.Expedition",
+        "name": "expedition",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "domicileTravail",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "travail",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CarbonEmissions.Deplacements",
+        "name": "deplacements",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getAutresMateriaux",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getChauffageFossile",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getClimatisation",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getCombustiblesFossilesSourcesFixes",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getCombustiblesFossilesSourcesMobiles",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getDomicileTravail",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getExplosifs",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getFluxFerroviaire",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getFluxMaritime",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getFluxRoutier",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getFournisseur",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getHydrogene",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getMatiereOrganique",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getMetaux",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getPerteSequestration",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getPerteStocks",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getPertesEnLigne",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getPlastiques",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getProductionElectriciteCombustiblesSourcesFixes",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getProduitsChimiques",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getScope1Emissions",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getScope2Emissions",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getScope3Emissions",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getTotalEmissions",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getTraitementEauxUsees",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getTransportElectricite",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_company",
+        "type": "address"
+      }
+    ],
+    "name": "getTravail",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "ownerOfContract",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      }
+    ],
+    "name": "registerCompany",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
 ]

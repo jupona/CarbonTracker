@@ -229,4 +229,168 @@ contract CarbonEmissions {
     function getTotalEmissions(address _company) public view returns (uint256) {
         return companies[_company].totalEmissions;
     }
+
+    // Get functions for each emission type
+    function getCombustiblesFossilesSourcesFixes(
+        address _company
+    ) public view returns (uint256) {
+        return companies[_company].combustibles.fossilesSourcesFixes;
+    }
+
+    function getCombustiblesFossilesSourcesMobiles(
+        address _company
+    ) public view returns (uint256) {
+        return companies[_company].combustibles.fossilesSourcesMobiles;
+    }
+
+    function getProductionElectriciteCombustiblesSourcesFixes(
+        address _company
+    ) public view returns (uint256) {
+        return
+            companies[_company]
+                .combustibles
+                .productionElectriciteCombustiblesSourcesFixes;
+    }
+
+    function getChauffageFossile(
+        address _company
+    ) public view returns (uint256) {
+        return companies[_company].combustibles.chauffageFossile;
+    }
+
+    function getExplosifs(address _company) public view returns (uint256) {
+        return companies[_company].combustibles.explosifs;
+    }
+
+    function getFournisseur(address _company) public view returns (uint256) {
+        return companies[_company].electricite.fournisseur;
+    }
+
+    function getPertesEnLigne(address _company) public view returns (uint256) {
+        return companies[_company].electricite.pertesEnLigne;
+    }
+
+    function getClimatisation(address _company) public view returns (uint256) {
+        return companies[_company].halocarbures.climatisation;
+    }
+
+    function getTransportElectricite(
+        address _company
+    ) public view returns (uint256) {
+        return companies[_company].halocarbures.transportElectricite;
+    }
+
+    function getTraitementEauxUsees(
+        address _company
+    ) public view returns (uint256) {
+        return companies[_company].eauxUsees.traitement;
+    }
+
+    function getMetaux(address _company) public view returns (uint256) {
+        return companies[_company].intrants.metaux;
+    }
+
+    function getProduitsChimiques(
+        address _company
+    ) public view returns (uint256) {
+        return companies[_company].intrants.produitsChimiques;
+    }
+
+    function getPlastiques(address _company) public view returns (uint256) {
+        return companies[_company].intrants.plastiques;
+    }
+
+    function getHydrogene(address _company) public view returns (uint256) {
+        return companies[_company].intrants.hydrogene;
+    }
+
+    function getMatiereOrganique(
+        address _company
+    ) public view returns (uint256) {
+        return companies[_company].dechets.matiereOrganique;
+    }
+
+    function getAutresMateriaux(
+        address _company
+    ) public view returns (uint256) {
+        return companies[_company].dechets.autresMateriaux;
+    }
+
+    function getPerteStocks(address _company) public view returns (uint256) {
+        return companies[_company].deboisement.perteStocks;
+    }
+
+    function getPerteSequestration(
+        address _company
+    ) public view returns (uint256) {
+        return companies[_company].deboisement.perteSequestration;
+    }
+
+    function getFluxRoutier(address _company) public view returns (uint256) {
+        return companies[_company].expedition.fluxRoutier;
+    }
+
+    function getFluxFerroviaire(
+        address _company
+    ) public view returns (uint256) {
+        return companies[_company].expedition.fluxFerroviaire;
+    }
+
+    function getFluxMaritime(address _company) public view returns (uint256) {
+        return companies[_company].expedition.fluxMaritime;
+    }
+
+    function getDomicileTravail(
+        address _company
+    ) public view returns (uint256) {
+        return companies[_company].deplacements.domicileTravail;
+    }
+
+    function getTravail(address _company) public view returns (uint256) {
+        return companies[_company].deplacements.travail;
+    }
+
+    // Get functions for each scope
+    function getScope1Emissions(
+        address _company
+    ) public view returns (uint256) {
+        Company storage company = companies[_company];
+        return
+            company.combustibles.fossilesSourcesFixes +
+            company.combustibles.fossilesSourcesMobiles +
+            company.combustibles.productionElectriciteCombustiblesSourcesFixes +
+            company.combustibles.chauffageFossile +
+            company.combustibles.explosifs +
+            company.halocarbures.climatisation +
+            company.halocarbures.transportElectricite +
+            company.eauxUsees.traitement;
+    }
+
+    function getScope2Emissions(
+        address _company
+    ) public view returns (uint256) {
+        Company storage company = companies[_company];
+        return
+            company.electricite.fournisseur + company.electricite.pertesEnLigne;
+    }
+
+    function getScope3Emissions(
+        address _company
+    ) public view returns (uint256) {
+        Company storage company = companies[_company];
+        return
+            company.intrants.metaux +
+            company.intrants.produitsChimiques +
+            company.intrants.plastiques +
+            company.intrants.hydrogene +
+            company.dechets.matiereOrganique +
+            company.dechets.autresMateriaux +
+            company.deboisement.perteStocks +
+            company.deboisement.perteSequestration +
+            company.expedition.fluxRoutier +
+            company.expedition.fluxFerroviaire +
+            company.expedition.fluxMaritime +
+            company.deplacements.domicileTravail +
+            company.deplacements.travail;
+    }
 }

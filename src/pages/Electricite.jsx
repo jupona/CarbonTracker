@@ -1,13 +1,14 @@
-import  { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import Wrapper from "../assets/wrappers/Electricite";
-// import { saveAs } from "file-saver";
-import { carbonContract} from "../abis/contractAddress.json";
+import { carbonContract } from "../abis/contractAddress.json";
 import carbonABI from "../abis/carbonABI.json";
-import WalletContext from '../context/walletContext';
+import WalletContext from "../context/walletContext";
 import Web3 from "web3";
+
 const web3 = new Web3(window.ethereum);
+
 const Electricite = () => {
-  const { walletAddress} = useContext(WalletContext);
+  const { walletAddress } = useContext(WalletContext);
 
   const [hydroQuebec, setHydroQuebec] = useState({
     caracterisation: "",
@@ -36,50 +37,52 @@ const Electricite = () => {
 
   const handleHydroQuebecChange = (e) => {
     const { name, value } = e.target;
-    setHydroQuebec((prev) => ({
-      ...prev,
-      [name]: value,
-      emission:
-        name === "conso" || name === "facteur"
-          ? ((value * prev.facteur) / 1000000).toFixed(2)
-          : prev.emission,
-    }));
+    setHydroQuebec((prev) => {
+      const conso = name === "conso" ? parseFloat(value) || 0 : prev.conso;
+      const facteur =
+        name === "facteur" ? parseFloat(value) || 0 : prev.facteur;
+      const emission = ((conso * facteur) / 1000000).toFixed(2);
+
+      return {
+        ...prev,
+        [name]: value,
+        emission,
+      };
+    });
   };
 
-  // const handleSave = (data, filename) => {
-  //   const json = JSON.stringify(data, null, 2);
-  //   const blob = new Blob([json], { type: "application/json" });
-  //   saveAs(blob, filename);
-  // };
-
-  let pertesLigneInt = Math.floor(pertesLigne.emission * 100)
-  let hydroQuebecInt = Math.floor(hydroQuebec.emission * 100)
-  const addpertesLigneInt = async (pertesLigneInt) => {
+  const addPertesLigne = async () => {
     try {
-      // Contract address and ABI should already be available in the component
-     const address = carbonContract[0];
+      const address = carbonContract[0];
       const contract = new web3.eth.Contract(carbonABI, address);
-      const result = await contract.methods.addPertesEnLigne(pertesLigneInt ).send({
-        from: walletAddress // The connected address that will initiate the transaction
-      });
+      const result = await contract.methods
+        .addPertesEnLigne(pertesLigneInt)
+        .send({
+          from: walletAddress,
+        });
       console.log(result);
     } catch (error) {
-      console.error(error);
+      console.error("Error:", error);
     }
   };
-  const addhydroQuebecInt = async (hydroQuebecInt) => {
+
+  const addHydroQuebec = async () => {
     try {
-      // Contract address and ABI should already be available in the component
-     const address = carbonContract[0];
+      const address = carbonContract[0];
       const contract = new web3.eth.Contract(carbonABI, address);
-      const result = await contract.methods.addHydroQuebec(hydroQuebecInt ).send({
-        from: walletAddress // The connected address that will initiate the transaction
-      });
+      const result = await contract.methods
+        .addFournisseur(hydroQuebecInt)
+        .send({
+          from: walletAddress,
+        });
       console.log(result);
     } catch (error) {
-      console.error(error);
+      console.error("Error:", error);
     }
-  }
+  };
+
+  let pertesLigneInt = Math.floor(pertesLigne.emission * 100);
+  let hydroQuebecInt = Math.floor(hydroQuebec.emission * 100);
 
   return (
     <Wrapper>
@@ -126,13 +129,11 @@ const Electricite = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => addhydroQuebecInt(hydroQuebecInt)}>
-          Enregistrer
-        </button>
+        <button onClick={addHydroQuebec}>Enregistrer</button>
       </div>
 
       <div className="section">
-        <h2>Pertes en ligne de lélectricité</h2>
+        <h2>Pertes en ligne de l'électricité</h2>
         <table>
           <thead>
             <tr>
@@ -153,9 +154,7 @@ const Electricite = () => {
             </tr>
           </tbody>
         </table>
-        <button onClick={() => addpertesLigneInt(pertesLigneInt)}>
-          Enregistrer
-        </button>
+        <button onClick={addPertesLigne}>Enregistrer</button>
       </div>
     </Wrapper>
   );
